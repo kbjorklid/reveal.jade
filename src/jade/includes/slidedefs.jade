@@ -1,0 +1,96 @@
+doctype html
+
+mixin slides-root(title)
+    html
+        head
+            meta(charset="utf-8")
+            if title
+                title= title
+            else
+                title Slides
+            meta(name="apple-mobile-web-app-capable" content="yes")
+            meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+            meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+            link(rel='stylesheet', href='reveal/css/reveal.min.css')
+            link(rel='stylesheet', href='reveal/css/theme/default.css', id="theme")
+            link(rel='stylesheet', href='reveal/lib/css/zenburn.css')
+        body
+            .reveal
+                .slides
+                    block
+            script(src="reveal/lib/js/head.min.js")
+            script(src="reveal/js/reveal.min.js")
+            script(src="lib/jquery.min.js")
+            script(src="lib/helpers.js")
+            script.
+                Reveal.initialize({
+                    controls: true,
+                    progress: true,
+                    history: true,
+                    center: true,
+
+                    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                    // Parallax scrolling
+                    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                    // parallaxBackgroundSize: '2100px 900px',
+
+                    // Optional libraries used to extend on reveal.js
+                    dependencies: [
+                        { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                        { src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                        { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                        { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    ]
+                });
+
+
+mixin slide(title, subtitle)
+    section
+        if title
+            h2= title
+        if subtitle
+            h3= subtitle
+        block
+
+mixin slide-md(title, subtitle)
+    section(data-markdown)
+        if title
+            h1= title
+        if subtitle
+            h3= subtitle
+        script(type='text/template')
+            block
+
+mixin ul(items, isFragments)
+    ul
+        each item in items
+            if isFragments
+                li.fragment= item
+            else
+                li= item
+
+
+mixin ol(items, isFragments)
+    ul
+        each item in items
+            if isFragments
+                li.fragment= item
+            else
+                li= item
+
+
+
+mixin code(lang)
+    pre
+        if lang
+            code(contenteditable, class=lang)
+                block
+        else
+            code(contenteditable)
+                block
+
+

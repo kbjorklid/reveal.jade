@@ -1,0 +1,41 @@
+/*
+ * Level 1 variables
+ */
+@color-text-base: #333;
+@color-primary-accent: #e73300;
+
+@font-size-medium: @font-size-base + 2pt;
+
+/*
+ * Level 2 variables
+ */
+@color-text-muted: lighten(@color-text-base, 30%);
+@color-text-dark-muted: lighten(@color-text-base, 20%);
+
+
+// Key-value-pairs
+@color-text-kvp-value: @color-text-dark-muted;
+@color-text-kvp-key: @color-text-dark-muted;
+@color-kvp-accent: @color-primary-accent;
+@font-weight-kvp-key: 600;
+@border-thickness-kvp-accent: 2px;
+@padding-kvp: 0.05em 0.4em;
+
+// Icon-value-pairs
+@padding-icon-value-pair-icon: 0 0.2em 0 0;
+@color-icon-value-pair-icon: @color-primary-accent;
+@color-icon-value-pair-value: @color-text-dark-muted;
+
+// Portrait image
+@width-portrait-image: 150px;
+
+
+/*
+ * Override Bootstrap values
+ */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600);
+@font-family-sans-serif: 'Open Sans', sans-serif;
+@text-color: @color-text-base;
+@text-muted: @color-text-muted;
+
+

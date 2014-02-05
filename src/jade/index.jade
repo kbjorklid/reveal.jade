@@ -1,0 +1,34 @@
+include includes/slidedefs
+
++slides-root('Slides')
+    +slide('My First Slide', 'With a Subtitle')
+        p.
+            This is a slide.
+    +slide('My second slide')
+        p.
+            Look at this code. It's amazing:
+        +code("javascript").
+            if (true) {
+                console.log("lol");
+                function omg () {
+                   console.log("heollo");
+                }
+            }
+    +slide('Fragment list example')
+        +ul(["these", "are revealed", "one after another"], true)
+
+    +slide()
+        +slide("Vertical slide 1")
+            p.
+                Going down...
+        +slide("Vertical slide 2")
+            p.
+                here we are
+    +slide-md().
+        #Markdown!
+
+        * omg
+        * wtf
+
+
+
